@@ -1,0 +1,46 @@
+{{#each errors}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{text}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{{/each}}
+
+{{! formulario para editar transaccion }}
+<div class="col-md-4 mx-auto">
+  <div class="card">
+    <div class="card-header text-center">
+      <h3>Editar Transaccion</h3>
+    </div>
+    <div class="card-body">
+      <form action="/transaccion/edit-transaccion/{{transaccions._id}}?_method=PUT" method="POST">
+        <input type="hidden" name="_method" value="PUT" />
+      {{!-- para usa el metodo put,dentro de edittransaccion creo un input oculto para que el servidor sepa que voy a enviar un meotod put, que va a estar oculto, le agrego un name ya es la forma a travez de la cual el servidor va a revisar este input, como?  para que el servidor pueda revisarlo agrego un middleware llamado methodoverride. Permite extender la funcionalidade de los formularios. Lo que hace es ver si existe un name llamado _method. Si existe, va a realizar una accion nueva. Puede hacer una peticion put o delete. Para eso es que en form puse ... ?_methodPut?....  --}}
+        <div class="mb-3">
+          <label for="tipo">Tipo</label>
+          <select required class="form-control" name="tipo">
+            <option value="ingreso">Ingreso</option>
+            <option value="egreso" selected>Egreso</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="description">Descripcion:</label>
+          <textarea
+            name="description"
+            class="form-control"
+          >{{transaccions.description}}</textarea>
+        </div>
+        <div class="mb-3">
+          <label for="description">Monto:</label>
+          <input required type="number"  name="monto" value="{{transaccions.monto}}" class="form-control"></input>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>  
+</div>
+
+<button class="btn m-10 btn-success"> <a class="dropdown-item" href="/transaccion">Volver</a></button>

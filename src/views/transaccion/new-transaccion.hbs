@@ -1,0 +1,46 @@
+{{! formulario para crear transaccion }}
+<div class="col-md-4 mx-auto">
+  <div class="card m-10">
+    <div class="card-header bg-black text-center">
+      <h3 class="text-white">Nueva Transaccion</h3>
+    </div>
+    <div class="card-body text-right">
+      <form action="/transaccion/new-transaccion" method="POST">
+        <div class="mb-3">
+          <label for="tipo">Tipo</label>
+          <select required class="form-control" name="tipo">
+            <option value="ingreso">Ingreso</option>
+            <option value="egreso" selected>Egreso</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="description"> Descripcion de la transaccion :</label>
+          <select class="form-control" name="description">
+            <option default value="comida">comida</option>
+            <option value="alquiler" selected>alquiler</option>
+            <option value="gasto" selected>gasto</option>
+            <option value="diversion" selected>diversion</option>
+            <option value="transporte" selected>transporte</option>
+            <option value="otro" selected>otro</option>
+            <option value="salario" selected>Salario</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="monto">Monto en pesos</label>
+          <input
+            required
+            type="number"
+            name="monto"
+            class="form-control"
+            placeholder="2000"
+          ></input>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">
+          Guardar
+        </button>
+        
+      </form>
+    </div>
+  </div>
+</div>
+ <button class="btn btn-success"> <a class="dropdown-item" href="/transaccion">Volver</a></button>

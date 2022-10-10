@@ -1,0 +1,46 @@
+<table class="table bg-black ">
+  <thead class="text-white">
+    <tr>
+
+      <th scope="col">Tipo</th>
+      <th scope="col">Description</th>
+      <th scope="col">Monto</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Fecha Creacion</th>
+
+    </tr>
+  </thead>
+  <tbody class="text-white">
+  {{! las transacciones que recibo de mongo vienen un array de objeto y tengo que recorrerlo para eso lo hago con el each que esta debajo}}
+    {{#each transaccions}}
+      <tr>
+        <td>{{tipo}}</td>
+        {{! de esta forma acceda a la pripieda tipo de la transaccion }}
+        <td>{{description}}</td>
+        {{! de esta forma acceda a la pripieda descripcion de la nota }}
+        <td id="monto">{{monto}}</td>
+        <td>
+          <form action="/transaccion/delete/{{_id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button type="submit" class="btn btn-danger">Borrar</button>
+          </form>
+            {{!-- para usa el metodo delete ,dentro de edittransaccion creo un input oculto para que el servidor sepa que voy a enviar un meotod delete, que va a estar oculto, le agrego un name ya es la forma a travez de la cual el servidor va a revisar este input, como?  para que el servidor pueda revisarlo agrego un middleware llamado methodoverride. Permite extender la funcionalidade de los formularios. Lo que hace es ver si existe un name llamado _method. Si existe, va a realizar una accion nueva. Puede hacer una peticion put o delete. Para eso es que en form puse ... ?_methoddelete?....  --}}
+        </td>
+        <td>
+
+          
+            <a href="/transaccion/edit/{{_id}}">
+            <button type="submit" class="btn btn-success">Editar</button>
+            </a>
+    
+        </td>
+        <td> {{createdAt}}</td>
+
+      </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+
+<button class="btn btn-success"><a class="dropdown-item" href="/transaccion/add">Nueva transaccion</a></button>

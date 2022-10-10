@@ -1,0 +1,75 @@
+body {
+  background-image: url(/imagenes/background.jpg);
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
+}
+
+
+/* CSS COMUN A TODAS LAS VISTAS */
+main {
+  margin-top: 30px;
+}
+h1 {
+  color: white;
+}
+
+
+/* VISTA INICIO */
+.home, .titulo-inicio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* VISTA CONTACT */
+.caja-contacto {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* VISTA ABOUT PROYECT */
+.parafo {
+  font-size: larger;
+}
+
+
+.section {
+  font-family: 'Cedarville Cursive', cursive;
+  padding: 20px;
+  display: flex;
+  color: black;
+}
+.div1 {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; 
+}
+.div2{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 30px;
+  margin-bottom: 30px; 
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+ 
+}
+
+.animado {
+  opacity: 0;
+  transition: all 2s;
+}
+
+.mostrarArriba {
+  animation: mostrarArriba 1s;
+}
+
+@keyframes mostrarArriba {
+  0% {transform: translateX(-100px);}
+  100% {transform: translateX(0);}
+}
